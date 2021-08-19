@@ -6,6 +6,8 @@ const Prism = require('node-prismjs');
 const dirResolve = require('dir-resolve');
 
 const map = {
+  '&#123;': '{',
+  '&#125;': '}',
   '&#39;': '\'',
   '&amp;': '&',
   '&gt;': '>',
