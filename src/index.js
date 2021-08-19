@@ -3,7 +3,6 @@
 const fs = require('hexo-fs');
 const path = require('path');
 const Prism = require('node-prismjs');
-const dirResolve = require('dir-resolve');
 
 const map = {
   '&#123;': '{',
@@ -48,10 +47,15 @@ function toThemeMap(basePath, filename) {
   };
 }
 
+function resolvePathInPackage(packageName, pathString) {
+  const packagePath = path.dirname(require.resolve(packageName));
+  return path.join(packagePath, pathString);
+}
+
 const rootPath = hexo.config.root || '/';
-const prismLineNumbersPluginDir = dirResolve('prismjs/plugins/line-numbers');
-const prismThemeDir = dirResolve('prismjs/themes');
-const extraThemeDir = dirResolve('prism-themes/themes');
+const prismLineNumbersPluginDir = resolvePathInPackage('prismjs', 'plugins/line-numbers');
+const prismThemeDir = resolvePathInPackage('prismjs', 'themes');
+const extraThemeDir = resolvePathInPackage('prism-themes', 'themes');
 const prismMainFile = require.resolve('prismjs');
 const standardThemes = fs.listDirSync(prismThemeDir)
   .map(themeFileName => toThemeMap(prismThemeDir, themeFileName));
