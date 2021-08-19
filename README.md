@@ -1,13 +1,14 @@
 # Hexo-Prism-Plugin [![NPM](https://img.shields.io/npm/dm/hexo-prism-plugin.svg)](https://www.npmjs.com/package/hexo-prism-plugin)
-Since `highlight.js` didn't support JSX syntax properly, I wrote this plugin to replace
-Hexo's default code highlight plugin.
+
+This is an updated fork of hexo-prism-plugin that updates the dependencies, and fixes an encoding issue with curly braces.
 
 ## Install
 ```
-npm i -S hexo-prism-plugin
+npm i -S https://github.com/gregtatum/hexo-prism-plugin
 ```
+
 ## Usage
-Firstly, you should edit your `_config.yml` by adding following configuration.
+First, you should edit your `_config.yml` by adding following configuration.
 ```yaml
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
